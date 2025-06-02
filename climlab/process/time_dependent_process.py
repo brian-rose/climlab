@@ -201,6 +201,7 @@ class TimeDependentProcess(Process):
                                 after computation of tendencies.
 
         """
+        print('This is the compute method of process {}'.format(self.name))
         #  First reset tendencies to zero -- recomputing them is the point of this method
         for varname in self.tendencies:
             self.tendencies[varname] *= 0.

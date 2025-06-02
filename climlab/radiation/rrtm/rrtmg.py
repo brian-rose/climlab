@@ -139,7 +139,7 @@ class RRTMG(_Radiation):
 
         # Remove specific inputs from kwargs dictionary.
         #  We want any changes implemented in the parent __init__ method to be preserved here
-        remove_list = ['absorber_vmr','cldfrac','clwp','ciwp','r_liq','r_ice','specific_humidity',
+        remove_list = ['absorber_vmr','cldfrac','clwp','ciwp','r_liq','r_ice','specific_humidity','name',
                     #    'emissivity','aldif','aldir','asdif','asdir',
                     #    'S0','coszen',
                     #    'irradiance_factor','insolation',]
@@ -189,25 +189,27 @@ class RRTMG(_Radiation):
         # self.add_input('irradiance_factor', irradiance_factor)
         self.declare_input(['S0', 'coszen', 'irradiance_factor'])
 
-        LW = RRTMG_LW(specific_humidity = self.specific_humidity,
-                     absorber_vmr = self.absorber_vmr,
-                     cldfrac = self.cldfrac,
-                     clwp = self.clwp,
-                     ciwp = self.ciwp,
-                     r_liq = self.r_liq,
-                     r_ice = self.r_ice,
-                     icld = icld,
-                     irng = irng,
-                     idrv = idrv,
-                     permuteseed = permuteseed_lw,
-                     emissivity = emissivity,
-                     inflglw = inflglw,
-                     iceflglw = iceflglw,
-                     liqflglw = liqflglw,
-                     tauc = tauc_lw,
-                     tauaer = tauaer_lw,
-                     **kwargs)
-        SW = RRTMG_SW(specific_humidity = self.specific_humidity,
+        LW = RRTMG_LW(name = 'LW',
+                    specific_humidity = self.specific_humidity,
+                    absorber_vmr = self.absorber_vmr,
+                    cldfrac = self.cldfrac,
+                    clwp = self.clwp,
+                    ciwp = self.ciwp,
+                    r_liq = self.r_liq,
+                    r_ice = self.r_ice,
+                    icld = icld,
+                    irng = irng,
+                    idrv = idrv,
+                    permuteseed = permuteseed_lw,
+                    emissivity = emissivity,
+                    inflglw = inflglw,
+                    iceflglw = iceflglw,
+                    liqflglw = liqflglw,
+                    tauc = tauc_lw,
+                    tauaer = tauaer_lw,
+                    **kwargs)
+        SW = RRTMG_SW(name = 'SW',
+                     specific_humidity = self.specific_humidity,
                      absorber_vmr = self.absorber_vmr,
                      cldfrac = self.cldfrac,
                      clwp = self.clwp,
