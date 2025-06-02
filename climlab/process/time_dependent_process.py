@@ -265,6 +265,7 @@ class TimeDependentProcess(Process):
             #  If so, it's time to do a subprocess step.
             if self.time['steps'] % step_ratio == 0:
                 proc.time['active_now'] = True
+                print('proctype is {}'.format(proctype))
                 tenddict = proc.compute()
             else:
                 # proc.tendencies is unchanged from last subprocess timestep if we didn't recompute it above

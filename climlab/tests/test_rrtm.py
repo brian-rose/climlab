@@ -212,7 +212,8 @@ def test_insolation_and_cozen():
                                 insolation=sun.insolation,
                                 coszen=sun.coszen)
     model = climlab.couple([rad,sun,h2o,], name='RCM')
-    model.compute_diagnostics()
+    # model.compute_diagnostics()
+    model.step_forward()
 
 @pytest.mark.compiled
 @pytest.mark.fast
